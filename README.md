@@ -179,3 +179,18 @@ This diagram shows the **infrastructure behind the GKE cluster**, with two **Man
 - **Response**: 
   - List of candidates (JSON) with status `200`.
   - `"Not Found"` with status `404` if no candidates exist.
+
+### `/games/tetris` (GET)
+ - **Purpose**: Loads javascript tetris game for usage in a Web Browser.
+
+      ![eks](./tetris.png)
+
+### `/games/frogger` (GET)
+ - **Purpose**: Loads javascript frogger game for usage in a Web Browser.
+
+      ![eks](./frogger.png)
+
+### `/games/breakout` (GET)
+ - **Purpose**: Loads javascript breakout game for usage in a Web Browser.
+
+      ![eks](./breakout.png)
