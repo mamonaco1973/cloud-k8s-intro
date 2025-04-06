@@ -101,7 +101,6 @@ To coordinate this complex choreography, these services **heavily use resource t
 
 - Tags help the control plane track which VMs, disks, and load balancers belong to which cluster or node pool.
 - They’re used for:
-  - **Cloud specific options for load balancing and node groups**
   - **Auto-discovery of subnets, routes, and firewalls**
   - **Identifying orphaned resources for cleanup**
   - **Routing traffic in cloud-native DNS and load balancing setups**
