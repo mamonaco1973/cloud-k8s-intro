@@ -1,203 +1,180 @@
-# Containerizing Microservices Across AWS, Azure, and GCP
+# Containerizing Applications Using Kubernetes in The Cloud
 
-**This video series complements the [Scaling in the Cloud](https://github.com/mamonaco1973/cloud-scaling-intro/blob/main/README.md) series**, where we deployed a simple Python-based microservice using the Flask framework across different cloud platforms.
+**This video series complements the [Scaling in the Cloud](https://github.com/mamonaco1973/cloud-scaling-intro/blob/main/README.md) and the [Simple Cloud Containers](https://github.com/mamonaco1973/container-intro/blob/main/README.md) series**, where we deployed a simple Python-based microservice using the Flask framework across different cloud platforms.
 
-In this new series, we'll take that same microservice and containerize it using **Docker**. You'll learn how to:
+In this new series, we'll take that same microservice and containerize it using **Docker**, then deploy it to **Kubernetes clusters** running on the managed Kubernetes services provided by each cloud platform.
+
+You’ll learn how to:
 
 - **Use a document database** for microservice data storage:
-   - **DynamoDB** for AWS
-   - **CosmosDB** for Azure
-   - **Firestore** for GCP
-- **Build a Docker container** for the microservice, optimizing it for cloud deployments.
-- **Push the container image** to the appropriate container registry for each cloud provider:
-  - **Amazon ECR (Elastic Container Registry)** for **AWS**  
-  - **Azure Container Registry (ACR)** for **Azure**  
-  - **Google Artifact Registry (GAR)** for **GCP**  
-- **Deploy the container** using the simplest container runtime services offered by each cloud provider:
-  - **AWS App Runner** for fully managed container deployments on AWS  
-  - **Azure Container Apps** for serverless container hosting on Azure  
-  - **Google Cloud Run** for scalable, stateless container execution on GCP  
+  - **DynamoDB** for AWS  
+  - **CosmosDB** for Azure  
+  - **Firestore** for GCP  
 
-## What You'll Learn
+- **Build a Docker container** for the Flask microservice, optimizing it for deployment in Kubernetes environments.
 
-By the end of this series, you’ll have hands-on experience with:  
-- Building Docker containers from scratch  
-- Pushing container images to cloud registries  
-- Deploying containerized applications with minimal configuration  
-- Understanding the key differences between App Runner, Container Apps, and Cloud Run  
+- **Build several additional Docker containers** that run simple JavaScript games like **Tetris**, **Frogger**, and **Breakout** — each serving as a standalone containerized app.
 
-This series is designed to help you get comfortable with simple container deployment workflows in **AWS**, **Azure**, and **GCP** before moving on to the complexities of `Kubernetes`.
+- **Push the container images** to the appropriate container registry for each cloud provider:
+  - **Amazon ECR (Elastic Container Registry)** for AWS  
+  - **Azure Container Registry (ACR)** for Azure  
+  - **Google Artifact Registry (GAR)** for GCP  
 
-There is a followup series to this series called [Configuring GitHub Actions in AWS, Azure and GCP](./.github/workflows/README.md). In that series we build these projects within the GitHub ecosystem using GitHub Actions.
+- **Deploy the containers to Kubernetes** using cloud-managed Kubernetes services:
+  - Deploy microservices and games to **Amazon EKS**
+  - Deploy microservices and games to **Azure AKS**
+  - Deploy microservices and games to **Google GKE**
 
-![actions](actions.png)
+- Configure **Kubernetes Deployments**, **Services**, and **Ingress** resources to expose and scale the applications across cloud providers.
+ 
+ - **Deploy and configure NGINX as an Ingress controller** to expose all microservices and games through a single unified endpoint via cloud-managed Load Balancers.
+
+
 ## Quick Links
 
-1. [Simple Cloud Containers: Docker Containers in AWS, Azure, and GCP](https://youtu.be/2BQB-OMAhH8)
+1. [Kubernetes In The Cloud](TBD)
 2. AWS Solution
-   - [Simple AWS Containers](https://youtu.be/hhtDigvwMwk)
-   - [GitHub Project](https://github.com/mamonaco1973/aws-flask-container/)
+   - [Elastic Kubernetes Service](TBD)
+   - [GitHub Project](https://github.com/mamonaco1973/aws-k8s/)
 3. Azure Solution
-   - [Simple Azure Containers](https://youtu.be/eogMQjbBvTo)
-   - [GitHub Project](https://github.com/mamonaco1973/azure-flask-container/)
+   - [Azure Kubernetes Service](TBD)
+   - [GitHub Project](https://github.com/mamonaco1973/azure-k8s/)
 4. GCP Solution
-   - [Simple GCP Containers](https://youtu.be/9q0hXgSssPI)
-   - [GitHub Project](https://github.com/mamonaco1973/gcp-flask-container/)
+   - [Google Kubernetes Engine](TBD)
+   - [GitHub Project](https://github.com/mamonaco1973/gcp-k8s/)
 
-## Comparing Container Registry Solutions
+## Are Cloud Kubernetes Services PaaS or IaaS?
 
-When deploying containerized applications to the cloud, storing and managing your container images securely and efficiently is critical. Each major cloud provider offers its own **Container Registry** solution, with some key differences and similarities:
+When deploying Kubernetes in the cloud using **Amazon EKS**, **Azure AKS**, or **Google GKE**, you might wonder:
 
-### **Amazon Elastic Container Registry (ECR)**
-- **Integration:** Deeply integrated with AWS services like ECS, EKS, and App Runner.
-- **Authentication:** Uses AWS IAM for secure access control.
-- **Performance:** Optimized for use within AWS, offering fast image pulls in the same region.
-- **Features:**
-  - Supports private and public repositories.
-  - Image vulnerability scanning with Amazon Inspector.
-  - Lifecycle policies to manage image retention.
-- **Pricing:** Based on data storage and image transfer (free transfers within the same region).
+> Are these services considered Infrastructure as a Service (IaaS) or Platform as a Service (PaaS)?
 
-### **Azure Container Registry (ACR)**
-- **Integration:** Works seamlessly with Azure services like AKS, Azure Container Apps, and Azure Functions.
-- **Authentication:** Supports Azure Active Directory (AAD) for role-based access control.
-- **Performance:** Offers geo-replication to sync registries across regions for faster access.
-- **Features:**
-  - Build and task automation directly within ACR.
-  - Content Trust for image signing and verification.
-  - Support for Helm charts and OCI artifacts.
-- **Pricing:** Based on service tier (Basic, Standard, Premium) and storage/transfer usage.
+They let you configure compute and scaling options — that sounds like IaaS. But they also manage the control plane, provision infrastructure for you, and abstract away much of the operational burden — that sounds like PaaS.
 
-### **Google Artifact Registry (GAR)**
-- **Integration:** Natively integrated with Google Cloud services like GKE, Cloud Run, and Cloud Build.
-- **Authentication:** Uses Google Cloud IAM for fine-grained access control.
-- **Performance:** Global availability with multi-region storage options for faster image pulls.
-- **Features:**
-  - Native support for Docker and OCI-compliant images.
-  - Vulnerability scanning via Google Artifact Analysis.
-  - Flexible repository configurations for regional, multi-regional, and hybrid cloud deployments.
-- **Pricing:** Based on storage and network egress; free within the same region.
+The most accurate answer is that they provide a **PaaS experience built on top of IaaS foundations** — blending declarative APIs with automated provisioning and deep integration into each cloud provider’s infrastructure.
 
 ---
 
-### **Key Differences at a Glance**
+### Managed Control Plane, Declarative Infrastructure
 
-| **Feature**               | **AWS ECR**                  | **Azure ACR**                    | **Google Artifact Registry (GAR)**   |
-|---------------------------|------------------------------|----------------------------------|--------------------------------------|
-| **Auth Mechanism**        | IAM Roles & Policies         | Azure AD (RBAC)                  | Google IAM                           |
-| **Vulnerability Scanning**| Yes (Amazon Inspector)       | Yes (Built-in)                   | Yes (Artifact Analysis)              |
-| **Geo-Replication**       | No                           | Yes (Premium Tier)               | Multi-region support                 |
-| **Build Automation**      | Limited                      | Integrated Build Tasks           | Cloud Build Integration              |
-| **Pricing Model**         | Storage & Transfer           | Tier-based + Usage               | Storage & Egress                     |
+With EKS, AKS, and GKE, you never install or operate the Kubernetes control plane. It’s fully managed by the cloud provider, including upgrades, high availability, monitoring, and security.
+
+You don’t provision VMs manually. Instead, you declare the size, shape, and behavior of node pools, and the service provisions infrastructure on your behalf. From the user’s point of view, it’s a **declarative, hands-off experience**, which is characteristic of **PaaS**.
 
 ---
 
-## Comparing Simplified Container Runtimes
+### Load Balancer Provisioning
 
-Modern cloud platforms offer **simplified container runtimes** that abstract away much of the complexity involved in container orchestration. Let’s compare **AWS App Runner**, **Azure Container Apps**, and **Google Cloud Run** to understand their strengths and trade-offs.
+Kubernetes makes exposing applications easy with `Service` objects of type `LoadBalancer`. In cloud environments:
 
-### **AWS App Runner**
-- **Use Case:** Best for deploying web applications and APIs without managing infrastructure.
-- **Deployment:** Direct from ECR or GitHub repositories.
-- **Scaling:** Auto-scales based on incoming requests; supports both manual and automatic scaling.
-- **Networking:** Supports private connectivity with VPC integration.
-- **Features:**
-  - SSL/TLS enabled by default.
-  - Built-in load balancing and health checks.
-  - IAM roles for secure resource access.
+- AWS automatically provisions an **Elastic Load Balancer**.
+- Azure creates an **Azure Load Balancer**.
+- GCP provisions a **Network Load Balancer**.
 
-**Pros:**
-- Extremely easy to set up with minimal configuration.
-- Strong AWS ecosystem integration.
+You don’t create or configure these resources directly — the Kubernetes cloud controller manager (CCM) does it for you. It wires the load balancer to your cluster and configures health checks, backend pools, and IP management based on annotations and service specifications.
 
-**Cons:**
-- Limited flexibility for complex networking scenarios.
-- Slightly higher cost compared to Fargate for large workloads.
-
-![AWS diagram](aws-flask-container.png)
+This is another hallmark of PaaS: you describe the need, and the infrastructure is created and managed for you.
 
 ---
 
-### **Azure Container Apps**
-- **Use Case:** Ideal for microservices, event-driven applications, and background processing.
-- **Deployment:** Supports containers from ACR, Docker Hub, or any OCI-compliant registry.
-- **Scaling:** Powered by **KEDA**, allowing scaling based on events (HTTP, queue messages, etc.).
-- **Networking:** Supports both public and private endpoints with VNET integration.
-- **Features:**
-  - Built-in Dapr support for microservice development.
-  - Ingress traffic splitting for A/B testing.
-  - Managed secrets for environment variables.
+### Autoscaling and VM Management: Still IaaS Under the Hood
 
-**Pros:**
-- Event-driven scaling capabilities are powerful.
-- Great for microservices with complex scaling needs.
+While you don't manage VMs directly, **EKS, AKS, and GKE rely on IaaS mechanisms** to provision and scale worker nodes:
 
-**Cons:**
-- Learning curve for KEDA-based scaling triggers.
-- Performance overhead for very lightweight applications compared to Azure Functions.
+- **EKS** uses **Auto Scaling Groups (ASGs)**
+- **AKS** uses **Virtual Machine Scale Sets (VMSS)**
+- **GKE** uses **Managed Instance Groups (MIGs)**
 
-![Azure diagram](azure-flask-container.png)
+You define node pool specs and scaling policies. The service then orchestrates compute resources using these backend scaling services. These mechanisms provide:
+
+- VM provisioning and auto-repair  
+- Auto-scaling based on cluster metrics  
+- Rolling upgrades and zone-aware scheduling  
+
+These are deeply rooted in IaaS — but you’re shielded from the details by the Kubernetes abstraction.
 
 ---
 
-### **Google Cloud Run**
-- **Use Case:** Best for stateless HTTP containers and APIs, designed for rapid scaling.
-- **Deployment:** Supports deploying from Artifact Registry or local Docker builds.
-- **Scaling:** Scales to zero when idle and up to thousands of instances instantly during peak demand.
-- **Networking:** Supports both public and private services (VPC connectors available).
-- **Features:**
-  - Integrated with Cloud Build and Cloud Scheduler.
-  - Granular IAM controls for service-level access.
-  - Request-based billing (pay only for the actual usage).
+### Tagging: The Glue That Holds It Together
 
-**Pros:**
-- Blazing fast scaling with per-request billing.
-- Simplified deployment workflow with CI/CD tools.
+To coordinate this complex choreography, these services **heavily use resource tagging**:
 
-**Cons:**
-- Cold start latency can affect real-time applications.
-- Limited control over the underlying infrastructure.
+- Tags help the control plane track which VMs, disks, and load balancers belong to which cluster or node pool.
+- They’re used for:
+  - **IAM permissions and access control**
+  - **Auto-discovery of subnets, routes, and firewalls**
+  - **Identifying orphaned resources for cleanup**
+  - **Routing traffic in cloud-native DNS and load balancing setups**
 
-![GCP diagram](gcp-flask-container.png)
----
+For example:
+- In **EKS**, tags on subnets help determine which ones are usable by worker nodes.
+- In **AKS**, tags on VMSS instances allow the Kubernetes autoscaler to track and modify node pools.
+- In **GKE**, labels and metadata help glue together instance templates, MIGs, and firewall rules.
 
-### **Key Differences at a Glance**
-
-| **Feature**               | **AWS App Runner**               | **Azure Container Apps**              | **Google Cloud Run**                  |
-|---------------------------|----------------------------------|---------------------------------------|--------------------------------------|
-| **Scaling Mechanism**     | Request-based auto-scaling       | Event-driven (KEDA) + HTTP scaling    | Request-based, scales to zero        |
-| **VPC Integration**       | Yes (VPC support)                | Yes (VNET support)                    | Yes (VPC connectors)                 |
-| **Deployment Sources**    | ECR, GitHub                      | ACR, Docker Hub, Custom Registries    | Artifact Registry, Local Builds      |
-| **Pricing Model**         | Per-container-hour + data transfer | Per-container-hour + executions      | Request-based (per 100ms) + invocations |
-| **Cold Start Latency**    | Low                              | Moderate (depends on scaling triggers) | Possible (can be mitigated with min instances) |
+You don’t typically manage these tags directly — the platform applies and manages them behind the scenes. But they are essential for the orchestration of cloud-native Kubernetes.
 
 ---
+
+### Conclusion
+
+Cloud Kubernetes services follow a “managed, not fully abstracted” philosophy:
+
+- You don’t install or maintain the control plane.
+- But you can see and control the infrastructure it runs on.
+
+By contrast, services like Managed Databases or Managed Active Directory are designed around a “fully abstracted” model where all infrastructure is hidden.
+
+## AWS Solution
+
+This diagram shows an **Amazon EKS cluster** in **US-EAST-2**, with a control plane, two node groups (`flask-app` and `games`), and pods running apps like `flask-app-1` and `tetris`. It connects to services like **VPC**, **ECR**, **DynamoDB**, **Load Balancer**, and **NGINX**, and is managed via `kubectl`.
+
+![eks](./aws-k8s.drawio.png)
+
+This diagram shows the AWS infrastructure behind the EKS cluster, with EC2-based node groups in private subnets, a Network Load Balancer for internet traffic, and connected services like DynamoDB and Elastic Container Registry.
+
+![eks-infra](./aws-k8s-infra.drawio.png)
+
+## Azure Solution
+
+This diagram shows an **Azure Kubernetes Service (AKS)** cluster in the **US Central region**, with a managed control plane, two node pools (`default` and `games`), and pods like `flask-app-1` and `tetris`. It integrates with **Virtual Networking**, **Azure Container Registry**, **CosmosDB**, **Azure Load Balancer**, and **NGINX**, and is managed using `kubectl`.
+
+![aks](./azure-k8s.drawio.png)
+
+This diagram shows the **underlying Azure infrastructure** supporting the AKS cluster. It includes two **VM Scale Sets** for the `default` and `games` node pools, managed within an **AKS resource group**. Traffic from the **internet** flows through a public **Load Balancer** to a **Kubernetes Load Balancer**, which distributes it to the VM instances. It also connects to **Cosmos DB** and **Azure Container Registry** to support the applications running in the cluster.
+
+![aks-infra](./azure-k8s-infra.drawio.png)
+
+## GCP Solution
+
+This diagram shows a **Google Kubernetes Engine (GKE)** cluster in **us-central-1**, with a managed control plane, two node pools (`default` and `games`), and pods like `flask-app-1` and `tetris`. It connects to **VPC Networking**, **Artifact Registry**, **Firestore Database**, **Load Balancer**, and **NGINX services**, and is managed using `kubectl`.
+
+![aks](./gcp-k8s.drawio.png)
+
+This diagram shows the **infrastructure behind the GKE cluster**, with two **Managed Instance Groups** powering the `flask-app` and `game` node pools. It integrates with **Cloud Load Balancing** (provisioned by NGINX), **Firestore** for data storage, and **Artifact Registry** for hosting container images of `flask-app` and `games`.
+
+![aks-infra](./gcp-k8s-infra.drawio.png)
 
 ## Service Endpoint Summary
 
-- [AWS Source Code](https://github.com/mamonaco1973/aws-flask-container/blob/main/02-docker/app.py)
-- [Azure Source Code](https://github.com/mamonaco1973/azure-flask-container/blob/main/02-docker/app.py)
-- [GCP Source Code](https://github.com/mamonaco1973/gcp-flask-container/blob/main/02-docker/app.py)
-
-### `/gtg` (GET)
+### `/flask-app/api/gtg` (GET)
 - **Purpose**: Health check.
 - **Response**: 
   - `{"connected": "true", "instance-id": <instance_id>}` (if `details` query parameter is provided).
   - 200 OK with no body otherwise.
 
-### `/candidate/<name>` (GET)
+### `/flask-app/api/<name>` (GET)
 - **Purpose**: Retrieve a candidate by name.
 - **Response**: 
   - Candidate details (JSON) with status `200`.
   - `"Not Found"` with status `404` if no candidate is found.
 
-### `/candidate/<name>` (POST)
+### `/flask-app/api/<name>` (POST)
 - **Purpose**: Add or update a candidate by name.
 - **Response**: 
   - `{"CandidateName": <name>}` with status `200`.
   - `"Unable to update"` with status `500` on failure.
 
-### `/candidates` (GET)
+### `/flask-app/api/candidates` (GET)
 - **Purpose**: Retrieve all candidates.
 - **Response**: 
   - List of candidates (JSON) with status `200`.
