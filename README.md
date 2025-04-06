@@ -1,34 +1,36 @@
 # Containerizing Applications Using Kubernetes in The Cloud
 
+
 **This video series complements the [Scaling in the Cloud](https://github.com/mamonaco1973/cloud-scaling-intro/blob/main/README.md) and the [Simple Cloud Containers](https://github.com/mamonaco1973/container-intro/blob/main/README.md) series**, where we deployed a simple Python-based microservice using the Flask framework across different cloud platforms.
 
 In this new series, we'll take that same microservice and containerize it using **Docker**, then deploy it to **Kubernetes clusters** running on the managed Kubernetes services provided by each cloud platform.
 
-You’ll learn how to:
+This is a **fully automated deployment** of containerized microservices and web apps across AWS, Azure, and GCP — powered by infrastructure-as-code and cloud-native tooling.
 
-- **Use a document database** for microservice data storage:
+You'll build and deploy:
+
+- **A document database-backed microservice** using:
   - **DynamoDB** for AWS  
   - **CosmosDB** for Azure  
   - **Firestore** for GCP  
 
-- **Build a Docker container** for the Flask microservice, optimizing it for deployment in Kubernetes environments.
+- **A Docker container** for the Flask microservice, optimized for Kubernetes deployments.
 
-- **Build several additional Docker containers** that run simple JavaScript games like **Tetris**, **Frogger**, and **Breakout** — each serving as a standalone containerized app.
+- **Additional standalone Docker containers** that run classic JavaScript games like **Tetris**, **Frogger**, and **Breakout**.
 
-- **Push the container images** to the appropriate container registry for each cloud provider:
-  - **Amazon ECR (Elastic Container Registry)** for AWS  
-  - **Azure Container Registry (ACR)** for Azure  
-  - **Google Artifact Registry (GAR)** for GCP  
+- **Cloud-native container registry workflows**, pushing images to:
+  - **Amazon ECR (Elastic Container Registry)**  
+  - **Azure Container Registry (ACR)**  
+  - **Google Artifact Registry (GAR)**  
 
-- **Deploy the containers to Kubernetes** using cloud-managed Kubernetes services:
-  - Deploy microservices and games to **Amazon EKS**
-  - Deploy microservices and games to **Azure AKS**
-  - Deploy microservices and games to **Google GKE**
+- **Kubernetes workloads on managed clusters**, deploying everything to:
+  - **Amazon EKS**  
+  - **Azure AKS**  
+  - **Google GKE**  
 
-- Configure **Kubernetes Deployments**, **Services**, and **Ingress** resources to expose and scale the applications across cloud providers.
- 
- - **Deploy and configure NGINX as an Ingress controller** to expose all microservices and games through a single unified endpoint via cloud-managed Load Balancers.
+- **Kubernetes manifests** including **Deployments**, **Services**, and **Ingress** resources for scalable, fault-tolerant workloads.
 
+- **NGINX as a unified Ingress controller**, exposing all services and games behind a single Load Balancer per cloud.
 
 ## Quick Links
 
