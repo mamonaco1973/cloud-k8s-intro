@@ -64,20 +64,6 @@ You don’t provision VMs manually. Instead, you declare the size, shape, and be
 
 ---
 
-### Load Balancer Provisioning
-
-Kubernetes makes exposing applications easy with `Service` objects of type `LoadBalancer`. In cloud environments:
-
-- AWS automatically provisions an **Elastic Load Balancer**.
-- Azure creates an **Azure Load Balancer**.
-- GCP provisions a **Network Load Balancer**.
-
-You don’t create or configure these resources directly — the Kubernetes cloud controller manager (CCM) does it for you. It wires the load balancer to your cluster and configures health checks, backend pools, and IP management based on annotations and service specifications.
-
-This is another hallmark of PaaS: you describe the need, and the infrastructure is created and managed for you.
-
----
-
 ### Autoscaling and VM Management: Still IaaS Under the Hood
 
 While you don't manage VMs directly, **EKS, AKS, and GKE rely on IaaS mechanisms** to provision and scale worker nodes:
@@ -93,6 +79,20 @@ You define node pool specs and scaling policies. The service then orchestrates c
 - Rolling upgrades and zone-aware scheduling  
 
 These are deeply rooted in IaaS — but you’re shielded from the details by the Kubernetes abstraction.
+
+---
+
+### Load Balancer Provisioning
+
+Kubernetes makes exposing applications easy with `Service` objects of type `LoadBalancer`. In cloud environments:
+
+- AWS automatically provisions an **Elastic Load Balancer**.
+- Azure creates an **Azure Load Balancer**.
+- GCP provisions a **Network Load Balancer**.
+
+You don’t create or configure these resources directly — the Kubernetes cloud controller manager (CCM) does it for you. It wires the load balancer to your cluster and configures health checks, backend pools, and IP management based on annotations and service specifications.
+
+This is another hallmark of PaaS: you describe the need, and the infrastructure is created and managed for you.
 
 ---
 
