@@ -6,7 +6,7 @@ In this new series, we'll take that same microservice and containerize it using 
 
 This is a **fully automated deployment** of containerized microservices and web apps across AWS, Azure, and GCP — powered by infrastructure-as-code and cloud-native tooling.
 
-You'll build and deploy:
+We'll build and deploy:
 
 - **A document database-backed microservice** using:
   - **DynamoDB** for AWS  
