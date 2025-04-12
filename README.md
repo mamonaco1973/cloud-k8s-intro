@@ -33,7 +33,7 @@ We'll build and deploy:
 
 ## Quick Links
 
-1. [Kubernetes In The Cloud](TBD)
+1. [Kubernetes In The Cloud](https://youtu.be/6A-DO_ymDQI)
 2. AWS Solution
    - [Elastic Kubernetes Service](TBD)
    - [GitHub Project](https://github.com/mamonaco1973/aws-k8s/)
