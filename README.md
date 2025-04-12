@@ -35,10 +35,10 @@ We'll build and deploy:
 
 1. [Kubernetes In The Cloud](https://youtu.be/6A-DO_ymDQI)
 2. AWS Solution
-   - [Elastic Kubernetes Service](TBD)
+   - [Elastic Kubernetes Service](https://youtu.be/Tl2y86V5XSQ)
    - [GitHub Project](https://github.com/mamonaco1973/aws-k8s/)
 3. Azure Solution
-   - [Azure Kubernetes Service](TBD)
+   - [Azure Kubernetes Service](https://youtu.be/LhFiK1otC7o)
    - [GitHub Project](https://github.com/mamonaco1973/azure-k8s/)
 4. GCP Solution
    - [Google Kubernetes Engine](TBD)
